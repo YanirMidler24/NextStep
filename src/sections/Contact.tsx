@@ -1,0 +1,27 @@
+import { ContactForm } from "@/components/Contact/ContactForm";
+import { CONTACT_CONTENT } from "@/constans";
+
+
+export function Contact() {
+    return (
+        <section
+            id="contact"
+            className="py-20 px-4"
+            aria-labelledby="contact-heading"
+            itemScope
+            itemType="https://schema.org/ContactPoint"
+        >
+            <div className="max-w-7xl mx-auto text-center">
+                <h2
+                    id="contact-heading"
+                    className="text-3xl md:text-4xl font-bold mb-12 bg-gradient-to-l from-purple-600 to-purple-400 bg-clip-text text-transparent"
+                >
+                    {CONTACT_CONTENT.title}
+                </h2>
+                <ContactForm />
+            </div>
+        </section>
+    );
+}
+
+export default Contact;
