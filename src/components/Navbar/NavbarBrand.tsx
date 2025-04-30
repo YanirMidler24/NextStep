@@ -17,8 +17,9 @@ export function NavbarBrand() {
         <Image
           src={Logo}
           alt="Next Step Logo"
+          width={160}
+          height={80}
           className="h-16 w-auto scale-150"
-          aria-hidden="false"
           priority
         />
       </Link>
