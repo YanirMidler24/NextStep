@@ -39,6 +39,13 @@ export function NavbarClient() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const handleBrandClick = () => {
+    if (isOpen) setIsOpen(false);
+
+    // If we're not on the home page, we'll let the normal link navigation happen
+    // The NavbarBrand component will handle the smooth scrolling on the home page
+  };
+
   return (
     <motion.nav
       initial={false}
@@ -47,10 +54,13 @@ export function NavbarClient() {
         scrolled: {
           backgroundColor: "rgba(0, 0, 0, 0.8)",
           backdropFilter: "blur(12px)",
+          boxShadow:
+            "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         },
         top: {
           backgroundColor: "rgba(0, 0, 0, 0)",
           backdropFilter: "blur(0px)",
+          boxShadow: "none",
         },
       }}
       className="fixed top-0 w-full z-50 transition-all duration-300"
@@ -59,7 +69,8 @@ export function NavbarClient() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <NavbarBrand />
+          {/* Pass the handleBrandClick function to NavbarBrand */}
+          <NavbarBrand onClick={handleBrandClick} />
           <DesktopMenu onItemClick={scrollToSection} />
           <MobileMenuButton isOpen={isOpen} toggleMenu={toggleMenu} />
         </div>

@@ -1,19 +1,30 @@
-"use client";
-
-import { motion } from "framer-motion";
+// This file should be without "use client" directive
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "/public/MainLogo.png";
 
-export function NavbarBrand() {
+export function NavbarBrand({ onClick }: { onClick?: () => void }) {
   return (
-    <motion.div
-      className="flex items-center justify-center h-16"
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Link href="/">
+    <div className="flex items-center justify-center h-16">
+      <Link
+        href="/"
+        onClick={(e) => {
+          if (typeof window !== "undefined") {
+            // Only prevent default if we're on the homepage
+            const isHomePage =
+              window.location.pathname === "/" ||
+              window.location.pathname === "";
+
+            if (isHomePage) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+            // Call the passed onClick handler (for menu closing)
+            if (onClick) onClick();
+          }
+        }}
+      >
         <Image
           src={Logo}
           alt="Next Step Logo"
@@ -23,6 +34,6 @@ export function NavbarBrand() {
           priority
         />
       </Link>
-    </motion.div>
+    </div>
   );
 }

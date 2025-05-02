@@ -52,7 +52,7 @@ export function ScrollToTop() {
       onClick={scrollToTop}
       aria-label="גלול לראש הדף"
       tabIndex={isVisible ? 0 : -1}
-      style={{ zIndex: 100 }}
+      style={{ zIndex: 90 }}
       aria-hidden={!isVisible}
     >
       <svg
