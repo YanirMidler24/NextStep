@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { KeyPoint } from "../About/KeyPoint";
+import { KeyPoint } from "../../About/KeyPoint";
 
 export function MotionKeyPoints({ points }: { points: string[] }) {
   return (

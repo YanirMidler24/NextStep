@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/sections";
 import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import Navbar from "@/sections/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,15 +36,24 @@ export const metadata: Metadata = {
     title: "Next Step – ליווי אישי לקריירה בהייטק",
     description:
       "לימוד תכנות, הכנה לראיונות עבודה, וסיוע במציאת עבודה ראשונה – עם מנטור אישי מנוסה.",
-    url: "https://yoursite.com", // 🔁 שים את כתובת האתר שלך
+    url: "https://takethenextstep.netlify.app", // ← כתובת האתר שלך
     type: "website",
     siteName: "Next Step",
+    images: [
+      {
+        url: "https://takethenextstep.netlify.app/SEO.jpg", // ✅ תמונה לקידום ברשתות
+        width: 1200,
+        height: 630,
+        alt: "Next Step – יניר מידלר",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Next Step – ליווי אישי לקריירה בהייטק",
     description:
       "שיעורים אישיים בתכנות, קורות חיים והכוונה לקריירה בתחום ההייטק עם יניר מידלר.",
+    images: ["https://takethenextstep.netlify.app/SEO.jpg"], // ✅ גם בטוויטר
   },
   robots: {
     index: true,

@@ -17,7 +17,7 @@ export function PackageCard({ pkg, index }: PackageCardProps) {
   return (
     <PackageCardClientWrapper delay={index * 0.1}>
       <div
-        className="bg-black border border-purple-500/20 rounded-lg p-6 hover:border-purple-500/40 transition-all duration-300 flex flex-col"
+        className="h-full bg-black border border-purple-500/20 rounded-lg p-6 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:border-purple-500/40 flex flex-col"
         role="article"
         aria-labelledby={`package-${index}-name`}
       >

@@ -1,4 +1,4 @@
-import { TechnologyCommunityClient } from "@/components/Shared/TechnologyCommunityClient";
+import { TechnologyCommunityClient } from "@/components/Shared/Technology/TechnologyCommunityClient";
 
 interface CommunityLink {
   url: string;

@@ -1,19 +1,21 @@
 import { ABOUT_CONTENT } from "@/constans";
 import { KeyPoint } from "./KeyPoint";
-import { MotionDiv } from "../Shared/MotionDiv";
+import { MotionDiv } from "../Shared/motion/MotionDiv";
 
 export function AboutDescription() {
   return (
     <div className="flex flex-col gap-12 text-center">
       <MotionDiv delay={0}>
-        {ABOUT_CONTENT.description.map((paragraph, index) => (
-          <p
-            key={index}
-            className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto"
-          >
-            {paragraph}
-          </p>
-        ))}
+        <div className="space-y-4">
+          {ABOUT_CONTENT.description.map((paragraph, index) => (
+            <p
+              key={index}
+              className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </MotionDiv>
 
       <MotionDiv delay={0.2}>

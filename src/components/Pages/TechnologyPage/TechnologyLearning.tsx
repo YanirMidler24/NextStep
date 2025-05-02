@@ -1,4 +1,4 @@
-import { TechnologyLearningClient } from "@/components/Shared/TechnologyLearningClient";
+import { TechnologyLearningClient } from "@/components/Shared/Technology/TechnologyLearningClient";
 
 interface LearningResource {
   title: string;

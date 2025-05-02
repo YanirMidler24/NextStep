@@ -1,4 +1,4 @@
-import { TechnologyHeaderClient } from "@/components/Shared/TechnologyHeaderClient";
+import { TechnologyHeaderClient } from "@/components/Shared/Technology/TechnologyHeaderClient";
 import { TechnologyInfo } from "@/interfaces/TechnologyInfo.interface";
 
 export function TechnologyHeader({ tech }: { tech: TechnologyInfo }) {
