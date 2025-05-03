@@ -1,6 +1,34 @@
 import { ABOUT_CONTENT } from "@/constans";
 import { KeyPoint } from "./KeyPoint";
 import { MotionDiv } from "../Shared/motion/MotionDiv";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: `ניסיון מעשי בהייטק | שיעור אישית | ${ABOUT_CONTENT.title}`,
+  description: `שיעור אישית להתפתחות בהייטק עם ניסיון מעשי ומקצועי. הדרך המותאמת עבורך לפיתוח קריירה מוצלחת. ${ABOUT_CONTENT.description[0]}`,
+  keywords: `יניר מידלר, שיעור אישית, הדרך להייטק, ניסיון מעשי, מפתח Full Stack, הצעד הבא, קריירה בהייטק, ${ABOUT_CONTENT.specialties.categories.flatMap((cat) => cat.skills).join(", ")}`,
+
+  openGraph: {
+    type: "profile",
+    title: `ניסיון מקצועי בהייטק | שיעור אישית | ${ABOUT_CONTENT.title}`,
+    description: `${ABOUT_CONTENT.description[0]} הדרך המותאמת אישית בקריירת ההייטק.`,
+    locale: "he_IL",
+    url: "https://takethenextstep.netlify.app/about", // Your domain with path
+  },
+
+  twitter: {
+    card: "summary",
+    title: `ניסיון וידע בהייטק | שיעור אישית | ${ABOUT_CONTENT.title}`,
+    description: `${ABOUT_CONTENT.description[0]} הדרך להצלחה בהייטק.`,
+    site: "@your_twitter_handle", // Your Twitter handle if available
+  },
+
+  other: {
+    "profile:first_name": "יניר",
+    "profile:last_name": "מידלר",
+    "profile:username": "yanirvs",
+  },
+};
 
 export function AboutDescription() {
   return (

@@ -1,0 +1,23 @@
+# robots.txt for takethenextstep.netlify.app
+User-agent: *
+Allow: /
+
+# Block Next.js internal files to save crawl budget
+Disallow: /_next/static/chunks/
+Disallow: /_next/*.json$
+Disallow: /_next/*_buildManifest.js$
+Disallow: /_next/*_middlewareManifest.js$
+Disallow: /_next/*_ssgManifest.js$
+
+# Block private areas if needed
+# Disallow: /admin/
+# Disallow: /dashboard/
+# Disallow: /api/
+
+# Allow static assets
+Allow: /_next/static/media/
+Allow: /_next/static/css/
+Allow: /_next/static/images/
+
+# Add your sitemap location
+Sitemap: https://takethenextstep.netlify.app/sitemap.xml
