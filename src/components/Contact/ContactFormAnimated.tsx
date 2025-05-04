@@ -5,18 +5,15 @@ import { InfoCard } from "./InfoCard";
 import { CONTACT_CONTENT } from "@/constans";
 import { ContactForm } from "../Shared/Contact/ContactForm";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-function ContactFormAnimated() {
+// Create a client component that uses useSearchParams
+function ContactFormContent() {
   const searchParams = useSearchParams();
   const packageName = searchParams.get("package") ?? undefined;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="max-w-2xl mx-auto"
-    >
+    <>
       <p className="text-gray-300 mb-8" itemProp="description">
         {CONTACT_CONTENT.description}
       </p>
@@ -34,8 +31,25 @@ function ContactFormAnimated() {
           />
         ))}
       </div>
+    </>
+  );
+}
+
+// Main component that applies animations and wraps the content in Suspense
+function ContactFormAnimated() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="max-w-2xl mx-auto"
+    >
+      <Suspense fallback={<p>טוען טופס יצירת קשר...</p>}>
+        <ContactFormContent />
+      </Suspense>
     </motion.div>
   );
 }
 
 export default ContactFormAnimated;
+
