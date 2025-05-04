@@ -44,8 +44,8 @@ export const NodeJSInfo: TechnologyInfo = {
 
     learningResources: [
         {
-            title: "רוצה ללמוד Node.js? מלא את הטופס ונחזור אליך",
-            url: "https://forms.gle/nys7FZkKkaTSuihb9",
+            title: "רוצה ללמוד Node.js? תשאירו פרטים ואחזור אלייך",
+            url: "contact",
         },
     ],
 

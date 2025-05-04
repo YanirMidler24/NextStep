@@ -45,8 +45,8 @@ export const NextJSInfo: TechnologyInfo = {
 
     learningResources: [
         {
-            title: "רוצה ללמוד Next.js? מלא את הטופס ונחזור אליך",
-            url: "https://forms.gle/nys7FZkKkaTSuihb9",
+            title: "רוצה ללמוד Next.js? תשאירו פרטים ואחזור אלייך",
+            url: "contact",
         },
     ],
 
