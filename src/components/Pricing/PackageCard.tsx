@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { PRICING_CONTENT } from "@/constans";
+import { Metadata } from "next";
 import { FeatureItem } from "../Pricing/FeatureItem";
 import { PackageCardClientWrapper } from "../Shared/PackageCardClientWrapper";
-import { Metadata } from "next";
+import { ScrollToContactButton } from "./ScrollToContactButton";
 
 interface PackageCardProps {
   pkg: {
@@ -117,15 +117,8 @@ export function PackageCard({ pkg, index }: PackageCardProps) {
           ))}
         </ul>
 
-        <Link
-          href={PRICING_CONTENT.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-105 mt-auto"
-          aria-label={`קבע/י שיעור עבור חבילת ${pkg.name}`}
-        >
-          {PRICING_CONTENT.linkText}
-        </Link>
+        <ScrollToContactButton label={PRICING_CONTENT.linkText} />
+
       </div>
     </PackageCardClientWrapper>
   );

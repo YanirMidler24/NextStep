@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { InfoCard } from "./InfoCard";
 import { CONTACT_CONTENT } from "@/constans";
+import { ContactForm } from "../Shared/Contact/ContactForm";
 
 function ContactFormAnimated() {
   return (
@@ -15,15 +16,7 @@ function ContactFormAnimated() {
       <p className="text-gray-300 mb-8" itemProp="description">
         {CONTACT_CONTENT.description}
       </p>
-      <a
-        href={CONTACT_CONTENT.buttonUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold mb-5 py-3 px-8 rounded-lg transition transform hover:scale-105"
-        itemProp="url"
-      >
-        {CONTACT_CONTENT.buttonText}
-      </a>
+      <ContactForm />
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
         {CONTACT_CONTENT.infoCards.map((card, index) => (
           <InfoCard

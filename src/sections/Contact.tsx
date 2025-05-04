@@ -1,4 +1,4 @@
-import { ContactForm } from "@/components/Contact/ContactForm";
+import { ContactServer } from "@/components/Contact/ContactServer";
 import { CONTACT_CONTENT } from "@/constans";
 
 
@@ -18,7 +18,7 @@ export function Contact() {
                 >
                     {CONTACT_CONTENT.title}
                 </h2>
-                <ContactForm />
+                <ContactServer />
             </div>
         </section>
     );

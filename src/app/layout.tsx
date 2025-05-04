@@ -4,6 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import Navbar from "@/sections/Navbar";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,13 +68,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl">
+    <html lang="he" dir="rtl" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
         {children}
         <ScrollToTop />
+        <Toaster
+          position="top-center"
+          theme="dark"
+          toastOptions={{
+            className: "bg-black text-purple-600 border border-purple-600 shadow-lg",
+          }}
+        />
+
         <Footer />
       </body>
     </html>
