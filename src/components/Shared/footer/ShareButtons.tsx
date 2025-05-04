@@ -16,7 +16,7 @@ const shareOnSocial = (platform: string) => {
       break;
 
     case "linkedin":
-      shareUrl = `https://www.linkedin.com/company/הצעד-הבא-קח-את-הצעד-הבא-לעבר-עולם-ההייטק`;
+      shareUrl = `https://www.linkedin.com/company/take-the-next-step-now`;
       break;
 
     case "whatsapp":
