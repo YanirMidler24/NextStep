@@ -10,20 +10,23 @@ export function NavbarBrand({ onClick }: { onClick?: () => void }) {
         href="/"
         onClick={(e) => {
           if (typeof window !== "undefined") {
-            // Only prevent default if we're on the homepage
             const isHomePage =
-              window.location.pathname === "/" ||
-              window.location.pathname === "";
+              window.location.pathname === "/" || window.location.pathname === "";
 
             if (isHomePage) {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
+
+              // ניקוי פרמטר package מה-URL
+              const url = new URL(window.location.href);
+              url.searchParams.delete("package");
+              window.history.replaceState({}, "", url.pathname + url.search + url.hash);
             }
 
-            // Call the passed onClick handler (for menu closing)
             if (onClick) onClick();
           }
         }}
+
       >
         <Image
           src={Logo}

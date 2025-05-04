@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    // Throttle function to improve performance
     let isThrottled = false;
 
     const toggleVisibility = () => {
@@ -20,40 +20,42 @@ export function ScrollToTop() {
     };
 
     window.addEventListener("scroll", toggleVisibility);
-
-    // Ensure we check visibility on component mount
-    toggleVisibility();
+    toggleVisibility(); // Initial check
 
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    // Move focus to the top of the page for screen readers
-    document.querySelector("body")?.focus();
-    // Announce to screen readers
+
+    // Remove focus to prevent hidden button from keeping focus
+    buttonRef.current?.blur();
+
+    // Screen reader announcement
     const announcement = document.createElement("div");
     announcement.setAttribute("aria-live", "assertive");
     announcement.setAttribute("role", "status");
-    announcement.style.position = "absolute";
-    announcement.style.width = "1px";
-    announcement.style.height = "1px";
-    announcement.style.overflow = "hidden";
-    announcement.textContent = "הגעת לראש הדף"; // "You've reached the top of the page" in Hebrew
+    Object.assign(announcement.style, {
+      position: "absolute",
+      width: "1px",
+      height: "1px",
+      overflow: "hidden",
+      clip: "rect(0 0 0 0)",
+    });
+    announcement.textContent = "הגעת לראש הדף";
     document.body.appendChild(announcement);
     setTimeout(() => document.body.removeChild(announcement), 3000);
   };
 
   return (
     <button
-      className={`${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      } fixed bottom-4 left-4 bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2`}
+      ref={buttonRef}
+      className={`fixed bottom-4 left-4 p-3 rounded-full transition-all duration-300 transform ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        } bg-purple-600 hover:bg-purple-700 text-white hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2`}
       onClick={scrollToTop}
       aria-label="גלול לראש הדף"
       tabIndex={isVisible ? 0 : -1}
       style={{ zIndex: 90 }}
-      aria-hidden={!isVisible}
     >
       <svg
         className="w-6 h-6"

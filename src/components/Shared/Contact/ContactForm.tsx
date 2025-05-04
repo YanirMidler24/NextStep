@@ -39,21 +39,28 @@ export function ContactForm() {
             toast.error("יש למלא את כל השדות");
             return;
         }
+
         try {
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ fullName, phone, email, message, packageName })
+                body: JSON.stringify({ fullName, phone, email, message, packageName }),
             });
 
             if (!res.ok) throw new Error("Failed to send");
 
             toast.success("ההודעה נשלחה בהצלחה!");
+
+            const url = new URL(window.location.href);
+            url.searchParams.delete("package");
+            window.history.replaceState({}, "", url.pathname);
+
             reset();
         } catch {
             toast.error("שליחה נכשלה. נסה שוב.");
         }
     };
+
 
     return (
         <motion.form
