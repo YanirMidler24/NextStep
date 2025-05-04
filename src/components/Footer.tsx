@@ -7,7 +7,7 @@ export function Footer() {
 
   const socialProfiles = {
     linkedin:
-      "https://www.linkedin.com/company/take-the-next-step-now",
+      "https://www.linkedin.com/in/yanir-midler",
     instagram: "https://instagram.com/yournextstepbyyanir",
     facebook: "https://facebook.com/yournextstepbyyanir",
     twitter: "https://twitter.com/yournextstep",
