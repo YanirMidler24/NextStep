@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import { InfoCard } from "./InfoCard";
 import { CONTACT_CONTENT } from "@/constans";
 import { ContactForm } from "../Shared/Contact/ContactForm";
+import { useSearchParams } from "next/navigation";
 
 function ContactFormAnimated() {
+  const searchParams = useSearchParams();
+  const packageName = searchParams.get("package") ?? undefined;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -16,7 +20,10 @@ function ContactFormAnimated() {
       <p className="text-gray-300 mb-8" itemProp="description">
         {CONTACT_CONTENT.description}
       </p>
-      <ContactForm />
+
+      {/* שלח את שם החבילה שנלקח מה-URL */}
+      <ContactForm packageName={packageName} />
+
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
         {CONTACT_CONTENT.infoCards.map((card, index) => (
           <InfoCard

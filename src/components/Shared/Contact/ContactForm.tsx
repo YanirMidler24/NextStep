@@ -7,7 +7,6 @@ import { TextareaField } from "../Inputs/TextareaField";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Loader from "../Loader/Loader";
-import { useSearchParams } from "next/navigation";
 
 type ContactFields = {
     fullName: string;
@@ -16,9 +15,7 @@ type ContactFields = {
     message: string;
 };
 
-export function ContactForm() {
-    const searchParams = useSearchParams();
-    const packageName = searchParams.get("package");
+export function ContactForm({ packageName }: { packageName?: string }) {
     const {
         register,
         handleSubmit,
@@ -30,15 +27,8 @@ export function ContactForm() {
     const { fullName, phone, email, message } = watch();
     const isFormEmpty = !fullName || !phone || !email || !message;
 
-
-
-
     const onSubmit = async (data: ContactFields) => {
         const { fullName, phone, email, message } = data;
-        if (!fullName || !phone || !email || !message) {
-            toast.error("יש למלא את כל השדות");
-            return;
-        }
 
         try {
             const res = await fetch("/api/contact", {
@@ -51,16 +41,15 @@ export function ContactForm() {
 
             toast.success("ההודעה נשלחה בהצלחה!");
 
+            reset();
+
             const url = new URL(window.location.href);
             url.searchParams.delete("package");
             window.history.replaceState({}, "", url.pathname);
-
-            reset();
         } catch {
             toast.error("שליחה נכשלה. נסה שוב.");
         }
     };
-
 
     return (
         <motion.form
@@ -91,18 +80,9 @@ export function ContactForm() {
                     type="tel"
                     register={register("phone", {
                         required: "שדה חובה",
-                        minLength: {
-                            value: 10,
-                            message: "מספר טלפון חייב להכיל 10 ספרות",
-                        },
-                        maxLength: {
-                            value: 10,
-                            message: "מספר טלפון חייב להכיל 10 ספרות",
-                        },
-                        pattern: {
-                            value: /^[0-9]+$/,
-                            message: "רק ספרות מותרות",
-                        },
+                        minLength: { value: 10, message: "10 ספרות בדיוק" },
+                        maxLength: { value: 10, message: "10 ספרות בדיוק" },
+                        pattern: { value: /^[0-9]+$/, message: "רק ספרות מותרות" },
                     })}
                     error={errors.phone?.message}
                     icon="phone"
@@ -131,7 +111,6 @@ export function ContactForm() {
                 error={errors.message?.message}
             />
 
-
             <Button
                 type="submit"
                 disabled={isFormEmpty || isSubmitting || Object.keys(errors).length > 0}
@@ -139,7 +118,6 @@ export function ContactForm() {
             >
                 {isSubmitting ? <Loader /> : "שלח/י הודעה"}
             </Button>
-
         </motion.form>
     );
 }

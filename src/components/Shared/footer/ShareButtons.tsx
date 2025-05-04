@@ -4,30 +4,34 @@ import React from "react";
 
 // הפונקציה לשיתוף ברשתות חברתיות
 const shareOnSocial = (platform: string) => {
-  const pageUrl = encodeURIComponent(window.location.href);
-  const pageTitle = encodeURIComponent(document.title);
-
   let shareUrl = "";
 
   switch (platform) {
     case "facebook":
-      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
       break;
+
     case "twitter":
-      shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+      shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(document.title)}`;
       break;
+
     case "linkedin":
-      shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+      shareUrl = `https://www.linkedin.com/company/הצעד-הבא-קח-את-הצעד-הבא-לעבר-עולם-ההייטק`;
       break;
+
     case "whatsapp":
-      shareUrl = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+      const phone = "972504080604";
+      const message = "היי, אני מעוניין לקחת את הצעד הבא שלי בהייטק";
+      shareUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
       break;
+
     default:
       return;
   }
 
   window.open(shareUrl, "_blank", "width=600,height=400");
 };
+
 
 // רכיב ShareButtons - רכיב קליינט שמטפל באינטראקציות
 export function ShareButtons() {
