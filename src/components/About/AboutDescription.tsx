@@ -28,6 +28,26 @@ export const metadata: Metadata = {
 
 
 export function AboutDescription() {
+  const highlightWords = ["React.js", "Next.js", "Node.js", "NestJS", "TypeScript"];
+
+  const highlightTechnologies = (text: string) => {
+    return text.split(" ").map((word, index) => {
+      const cleanWord = word.replace(/[^a-zA-Z0-9.]/g, ""); // ניקוי תווים כמו פסיקים
+      if (highlightWords.includes(cleanWord)) {
+        return (
+          <span
+            key={index}
+            className="text-purple-400 font-semibold transition-colors duration-200 hover:text-purple-300"
+          >
+            {word}{" "}
+          </span>
+
+        );
+      }
+      return word + " ";
+    });
+  };
+
   return (
     <div className="flex flex-col gap-12 text-center">
       <MotionDiv delay={0}>
@@ -37,7 +57,7 @@ export function AboutDescription() {
               key={index}
               className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
             >
-              {paragraph}
+              {highlightTechnologies(paragraph)}
             </h3>
           ))}
         </div>
@@ -53,3 +73,4 @@ export function AboutDescription() {
     </div>
   );
 }
+
