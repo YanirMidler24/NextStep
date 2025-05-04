@@ -7,6 +7,7 @@ import { TextareaField } from "../Inputs/TextareaField";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Loader from "../Loader/Loader";
+import { useSearchParams } from "next/navigation";
 
 type ContactFields = {
     fullName: string;
@@ -16,6 +17,8 @@ type ContactFields = {
 };
 
 export function ContactForm() {
+    const searchParams = useSearchParams();
+    const packageName = searchParams.get("package");
     const {
         register,
         handleSubmit,
@@ -31,11 +34,16 @@ export function ContactForm() {
 
 
     const onSubmit = async (data: ContactFields) => {
+        const { fullName, phone, email, message } = data;
+        if (!fullName || !phone || !email || !message) {
+            toast.error("יש למלא את כל השדות");
+            return;
+        }
         try {
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+                body: JSON.stringify({ fullName, phone, email, message, packageName })
             });
 
             if (!res.ok) throw new Error("Failed to send");

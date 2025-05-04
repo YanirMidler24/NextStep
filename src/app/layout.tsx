@@ -17,10 +17,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next Step – ליווי מקצועי לקריירה בהייטק | יניר מידלר",
+  title: "Next Step – הצעד הבא לקריירה בהייטק | יניר מידלר",
   description:
-    "מסלול אישי לקריירה בהייטק עם יניר מידלר – מפתח Full Stack מנוסה. ליווי צמוד, הכנה לראיונות, בניית תיק עבודות וכתיבת קורות חיים – הכל במקום אחד.",
+    "הצעד הבא שלך לקריירה בהייטק עם יניר מידלר – מפתח Full Stack מנוסה. ליווי מקצועי, הכנה לראיונות, בניית תיק עבודות וכתיבת קורות חיים – הכל במקום אחד.",
   keywords: [
+    "הצעד הבא",
     "ליווי מקצועי להייטק",
     "מסלול לקריירה בהייטק",
     "מנטורינג תכנות",
@@ -36,12 +37,12 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Next Step – קריירה בהייטק בליווי אישי | יניר מידלר",
+    title: "Next Step – הצעד הבא לקריירה בהייטק | יניר מידלר",
     description:
-      "לימוד תכנות, הכנה לעבודה בהייטק, ויצירת מסלול מותאם אישית עם מפתח מנוסה. פיתוח כישורים מעשיים, ביטחון מקצועי והכוונה אמיתית לקריירה.",
+      "הצעד הבא שלך בעולם ההייטק – לימוד תכנות, הכנה לעבודה, ויצירת מסלול מותאם אישית עם מפתח מנוסה. פיתוח כישורים מעשיים, ביטחון מקצועי והכוונה לקריירה.",
     url: "https://takethenextstep.netlify.app",
     type: "website",
-    siteName: "Next Step",
+    siteName: "Next Step – הצעד הבא",
     images: [
       {
         url: "https://takethenextstep.netlify.app/SEO.jpg",
@@ -54,11 +55,11 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Next Step – המסלול שלך לקריירה בהייטק | יניר מידלר",
+    title: "Next Step – הצעד הבא שלך להייטק | יניר מידלר",
     description:
-      "מסלול מקצועי ומעשי עם מנטור מהתעשייה. בניית כישורים, תיק עבודות והכוונה לעבודה ראשונה בהייטק.",
+      "הצעד הבא שלך לתעשיית ההייטק – ליווי מקצועי, בניית תיק עבודות, הכנה לראיונות והכוונה אמיתית עם מנטור מהתעשייה.",
     images: ["https://takethenextstep.netlify.app/SEO.jpg"],
-    site: "@your_twitter_handle", // תוכל לעדכן במידת הצורך
+    site: "@your_twitter_handle", // תוכל לעדכן לפי הצורך
   },
 
   robots: {
@@ -66,6 +67,7 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
 
 
 export default function RootLayout({

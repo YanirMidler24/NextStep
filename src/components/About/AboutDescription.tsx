@@ -4,16 +4,16 @@ import { MotionDiv } from "../Shared/motion/MotionDiv";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "יניר מידלר | מנטורינג לקריירה בהייטק עם ניסיון מעשי",
+  title: "יניר מידלר | הצעד הבא – מנטורינג לקריירה בהייטק עם ניסיון מעשי",
   description:
-    "הכירו את יניר מידלר – מפתח Full Stack מנוסה ומנטור לקריירה בהייטק. ליווי מקצועי, ידע מהשטח, ותרגול מעשי שיעזרו לכם להתקבל לתעשייה ולבנות מסלול מותאם אישית.",
-  keywords: `יניר מידלר, מנטור הייטק, ליווי קריירה, Full Stack, מנטורינג טכנולוגי, תכנות, קריירה בהייטק, מציאת עבודה בהייטק, ${ABOUT_CONTENT.specialties.categories.flatMap((cat) => cat.skills).join(", ")}`,
+    "הצעד הבא שלך לעולם ההייטק מתחיל עם יניר מידלר – מפתח Full Stack ומנטור מנוסה. ליווי אישי, ידע מקצועי מהתעשייה, ותרגול מעשי שיכינו אותך לקריירה אמיתית בהייטק.",
+  keywords: `הצעד הבא, יניר מידלר, מנטור הייטק, ליווי קריירה, Full Stack, מנטורינג טכנולוגי, תכנות, קריירה בהייטק, מציאת עבודה בהייטק, ${ABOUT_CONTENT.specialties.categories.flatMap((cat) => cat.skills).join(", ")}`,
 
   openGraph: {
     type: "profile",
-    title: "יניר מידלר – מנטור לקריירה בהייטק עם ניסיון אמיתי",
+    title: "יניר מידלר – מנטור לצמיחה מקצועית | הצעד הבא לקריירה בהייטק",
     description:
-      "מפתח תוכנה ומנטור עם ניסיון מעשי בתעשיית ההייטק. תרגול מקצועי, ליווי אישי ובניית מסלול קריירה מותאם עבורך.",
+      "הצעד הבא שלך עם יניר מידלר – ליווי מקצועי ותרגול אמיתי מהתעשייה. מסלול מותאם אישית שיביא אותך לעבודה בהייטק.",
     locale: "he_IL",
     url: "https://takethenextstep.netlify.app/about",
   },
@@ -33,12 +33,12 @@ export function AboutDescription() {
       <MotionDiv delay={0}>
         <div className="space-y-4">
           {ABOUT_CONTENT.description.map((paragraph, index) => (
-            <p
+            <h3
               key={index}
-              className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto"
+              className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
             >
               {paragraph}
-            </p>
+            </h3>
           ))}
         </div>
       </MotionDiv>

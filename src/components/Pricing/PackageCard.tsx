@@ -10,9 +10,11 @@ interface PackageCardProps {
     description: string;
     price: string;
     features: string[];
+    highlight?: string; // ✅ חדש
   };
   index: number;
 }
+
 
 export function generateMetadata({
   pkg,
@@ -22,11 +24,11 @@ export function generateMetadata({
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Course",
-    name: `מסלול אישי: ${pkg.name}`,
+    name: `מסלול אישי – ${pkg.name}`,
     description: `${pkg.description}. כולל: ${pkg.features.join(", ")}`,
     provider: {
-      "@type": "Person",
-      name: "יניר מידלר – מפתח ומנטור בהייטק",
+      "@type": "Organization",
+      name: "הצעד הבא – ליווי לקריירה בהייטק",
       url: "https://takethenextstep.netlify.app/about",
     },
     offers: {
@@ -38,27 +40,19 @@ export function generateMetadata({
   };
 
   return {
-    title: `מסלול אישי להייטק | ${pkg.name} | ליווי מקצועי עם יניר מידלר`,
-    description: `המסלול "${pkg.name}" מציע ליווי אישי, תרגול מעשי, והכנה לקריירה אמיתית בהייטק. ${pkg.description}. כולל: ${pkg.features.join(", ")}`,
-    keywords: `יניר מידלר, שיעור אישי, קריירה בהייטק, ${pkg.name}, מנטור הייטק, ליווי מקצועי, מסלול למתחילים, מסלול מתקדמים, ${pkg.features.join(", ")}`,
+    title: `הצעד הבא: מסלול ${pkg.name} לקריירה בהייטק | יניר מידלר`,
+    description: `המסלול "${pkg.name}" מבית 'הצעד הבא' מציע ליווי אישי, תרגול מעשי, והכנה אמיתית לעולם ההייטק. ${pkg.description}. כולל: ${pkg.features.join(", ")}`,
+    keywords: `הצעד הבא, יניר מידלר, מסלול אישי, ליווי בהייטק, ${pkg.name}, מנטורינג תכנות, קריירה בהייטק, ${pkg.features.join(", ")}`,
 
     openGraph: {
       type: "website",
-      title: `מסלול אישי לפיתוח קריירה: ${pkg.name} | Next Step – יניר מידלר`,
-      description: `ליווי מקצועי בהתאמה אישית. ${pkg.description}. כולל: ${pkg.features[0]}`,
+      title: `מסלול אישי: ${pkg.name} | הצעד הבא – קריירה בהייטק עם יניר מידלר`,
+      description: `הצעד הבא שלך להייטק מתחיל כאן. ${pkg.description}. כולל: ${pkg.features[0]}`,
       locale: "he_IL",
       url: `https://takethenextstep.netlify.app/pricing#${pkg.name
         .toLowerCase()
         .replace(/ /g, "-")}`,
     },
-
-    twitter: {
-      card: "summary",
-      title: `Next Step – מסלול ${pkg.name} | שיעור אישי עם יניר מידלר`,
-      description: `${pkg.description}. תכנית מותאמת אישית לפיתוח הקריירה שלך בהייטק.`,
-      site: "@your_twitter_handle", // עדכן אם רלוונטי
-    },
-
     other: {
       "product:price:amount": pkg.price.replace("₪", ""),
       "product:price:currency": "ILS",
@@ -71,6 +65,7 @@ export function generateMetadata({
     },
   };
 }
+
 
 
 export function PackageCard({ pkg, index }: PackageCardProps) {
@@ -107,7 +102,11 @@ export function PackageCard({ pkg, index }: PackageCardProps) {
             <meta itemProp="priceCurrency" content="ILS" />
           </div>
         </div>
-
+        {pkg.highlight && (
+          <p className="text-sm text-green-400 font-semibold mb-4" aria-label="הדגשת מחיר משתלם">
+            {pkg.highlight}
+          </p>
+        )}
         <ul
           className="space-y-3 mb-6 flex-1"
           aria-label={`תכונות חבילת ${pkg.name}`}
@@ -117,7 +116,7 @@ export function PackageCard({ pkg, index }: PackageCardProps) {
           ))}
         </ul>
 
-        <ScrollToContactButton label={PRICING_CONTENT.linkText} />
+        <ScrollToContactButton label={PRICING_CONTENT.linkText} packageName={pkg.name} />
 
       </div>
     </PackageCardClientWrapper>

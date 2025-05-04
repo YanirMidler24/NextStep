@@ -1,9 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 import { TechnologyInfo } from "@/interfaces/TechnologyInfo.interface";
 
 export function TechnologyHeaderClient({ tech }: { tech: TechnologyInfo }) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const scrollToContact = () => {
+    if (pathname !== "/") {
+      router.push("/#contact");
+    } else {
+      const el = document.getElementById("contact");
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -15,16 +28,13 @@ export function TechnologyHeaderClient({ tech }: { tech: TechnologyInfo }) {
       <p className="text-md text-gray-400 mb-4">{tech.category}</p>
       <p className="text-lg text-gray-300 leading-relaxed mb-8">{tech.description}</p>
 
-      {/* כפתור להתחלה */}
-      <a
-        href="https://forms.gle/rhugG6vjTeFBvT3s9"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={scrollToContact}
         className="bg-purple-600 hover:bg-purple-500 text-white py-3 px-8 rounded-full text-lg transition focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2"
-        aria-label="רוצה להתחיל? לחץ כאן"
+        aria-label="רוצה להתחיל? גלול לטופס יצירת קשר"
       >
         רוצה להתחיל? לחץ כאן
-      </a>
+      </button>
     </motion.div>
   );
 }

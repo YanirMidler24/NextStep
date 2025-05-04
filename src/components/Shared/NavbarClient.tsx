@@ -41,9 +41,6 @@ export function NavbarClient() {
 
   const handleBrandClick = () => {
     if (isOpen) setIsOpen(false);
-
-    // If we're not on the home page, we'll let the normal link navigation happen
-    // The NavbarBrand component will handle the smooth scrolling on the home page
   };
 
   return (
