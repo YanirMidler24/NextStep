@@ -1,5 +1,4 @@
 import Script from "next/script";
-import { AddThisScript } from "./Shared/footer/AddThisScript";
 import { ShareButtons } from "./Shared/footer/ShareButtons";
 
 export function Footer() {
@@ -16,7 +15,6 @@ export function Footer() {
 
   return (
     <>
-      <AddThisScript />
 
       <footer
         className="bg-black/50 py-8"

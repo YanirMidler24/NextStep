@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { MobileMenuItem } from './MobileMenuItem';
 import { NAVBAR_CONTENT } from '@/constans';
+import { ShareButtons } from '../Shared/footer/ShareButtons';
+
 export function MobileMenu({ isOpen, onItemClick }: { isOpen: boolean, onItemClick: (id: string) => void }) {
     const menuVariants = {
         open: {
@@ -50,6 +52,10 @@ export function MobileMenu({ isOpen, onItemClick }: { isOpen: boolean, onItemCli
                                 onClick={onItemClick}
                             />
                         ))}
+
+                        <div className="flex flex-col items-center align-middle justify-center space-y-6 p-4">
+                            <ShareButtons />
+                        </div>
                     </motion.div>
                 </motion.div>
             )}
