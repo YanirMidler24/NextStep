@@ -16,51 +16,57 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// ✅ SEO עדכני
 export const metadata: Metadata = {
-  title: "Next Step – ליווי אישי לקריירה בהייטק",
+  title: "Next Step – ליווי מקצועי לקריירה בהייטק | יניר מידלר",
   description:
-    "מנטורינג אישי ללימוד תכנות, הכנה לראיונות, בניית קורות חיים והכוונה לקריירה בתחום ההייטק. יניר מידלר, מפתח מנוסה, מלווה אותך בצעד הבא.",
+    "מסלול אישי לקריירה בהייטק עם יניר מידלר – מפתח Full Stack מנוסה. ליווי צמוד, הכנה לראיונות, בניית תיק עבודות וכתיבת קורות חיים – הכל במקום אחד.",
   keywords: [
-    "מנטור תכנות",
+    "ליווי מקצועי להייטק",
+    "מסלול לקריירה בהייטק",
+    "מנטורינג תכנות",
     "React",
     "Node.js",
     "Next.js",
     "NestJS",
-    "לימוד תכנות",
-    "הכנה לראיונות",
-    "קורות חיים להייטק",
-    "שיעורים פרטיים אונליין",
+    "הכנה לראיונות עבודה",
+    "בניית קורות חיים",
     "הייטק למתחילים",
+    "תיק עבודות למפתחים",
+    "לימוד פיתוח תוכנה",
   ],
+
   openGraph: {
-    title: "Next Step – ליווי אישי לקריירה בהייטק",
+    title: "Next Step – קריירה בהייטק בליווי אישי | יניר מידלר",
     description:
-      "לימוד תכנות, הכנה לראיונות עבודה, וסיוע במציאת עבודה ראשונה – עם מנטור אישי מנוסה.",
-    url: "https://takethenextstep.netlify.app", // ← כתובת האתר שלך
+      "לימוד תכנות, הכנה לעבודה בהייטק, ויצירת מסלול מותאם אישית עם מפתח מנוסה. פיתוח כישורים מעשיים, ביטחון מקצועי והכוונה אמיתית לקריירה.",
+    url: "https://takethenextstep.netlify.app",
     type: "website",
     siteName: "Next Step",
     images: [
       {
-        url: "https://takethenextstep.netlify.app/SEO.jpg", // ✅ תמונה לקידום ברשתות
+        url: "https://takethenextstep.netlify.app/SEO.jpg",
         width: 1200,
         height: 630,
         alt: "Next Step – יניר מידלר",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Next Step – ליווי אישי לקריירה בהייטק",
+    title: "Next Step – המסלול שלך לקריירה בהייטק | יניר מידלר",
     description:
-      "שיעורים אישיים בתכנות, קורות חיים והכוונה לקריירה בתחום ההייטק עם יניר מידלר.",
-    images: ["https://takethenextstep.netlify.app/SEO.jpg"], // ✅ גם בטוויטר
+      "מסלול מקצועי ומעשי עם מנטור מהתעשייה. בניית כישורים, תיק עבודות והכוונה לעבודה ראשונה בהייטק.",
+    images: ["https://takethenextstep.netlify.app/SEO.jpg"],
+    site: "@your_twitter_handle", // תוכל לעדכן במידת הצורך
   },
+
   robots: {
     index: true,
     follow: true,
   },
 };
+
 
 export default function RootLayout({
   children,

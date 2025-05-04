@@ -3,18 +3,19 @@ import { motion } from "framer-motion";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: HERO_CONTENT.title,
-  description: `שיעור אישית להייטק - ${HERO_CONTENT.description.join(" ")} ניסיון מעשי והדרך המותאמת לצרכים שלך.`,
-  keywords: `שיעור אישית, הדרך להייטק, ניסיון מעשי, קריירה בהייטק, לימוד תכנות, ראיונות עבודה, ${HERO_CONTENT.technologies.map((tech) => tech.name).join(", ")}`,
+  title: "Next Step – המסלול שלך לקריירה מקצועית בהייטק",
+  description: `${HERO_CONTENT.description.join(" ")} ליווי אישי, ניסיון מעשי, והכנה לקריירה מותאמת אישית בתעשיית ההייטק.`,
+  keywords: `קריירה בהייטק, מנטורינג, תכנות, לימוד תכנות, ראיונות עבודה, פיתוח אישי, מפתח תוכנה, ${HERO_CONTENT.technologies.map((tech) => tech.name).join(", ")}`,
 
   openGraph: {
     type: "website",
-    title: HERO_CONTENT.title,
-    description: `שיעור אישית עם ניסיון מעשי - ${HERO_CONTENT.description.join(" ")}`,
+    title: "Next Step – פיתוח קריירה בהייטק בליווי אישי",
+    description: `מסלול מותאם אישית לקריירה בהייטק עם דגש על הכנה מעשית, ניסיון אמיתי וליווי צמוד – ${HERO_CONTENT.description.join(" ")}`,
     locale: "he_IL",
-    url: "https://takethenextstep.netlify.app/", // Your domain
+    url: "https://takethenextstep.netlify.app/",
   },
 };
+
 
 export function HeroTitle() {
   // Added the missing keywords to the highlighted words

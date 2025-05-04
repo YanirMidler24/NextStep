@@ -14,49 +14,49 @@ interface PackageCardProps {
   index: number;
 }
 
-// Generate metadata for each package card
 export function generateMetadata({
   pkg,
 }: {
   pkg: PackageCardProps["pkg"];
 }): Metadata {
-  // Creating structured data for pricing package (JSON-LD)
   const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Course",
-    name: `שיעור אישית: ${pkg.name}`,
-    description: `הדרך לקריירה בהייטק - ${pkg.description}`,
+    name: `מסלול אישי: ${pkg.name}`,
+    description: `${pkg.description}. כולל: ${pkg.features.join(", ")}`,
     provider: {
       "@type": "Person",
-      name: "יניר מידלר - ניסיון מקצועי בהייטק",
-      url: "https://takethenextstep.netlify.app/about", // Your domain with path
+      name: "יניר מידלר – מפתח ומנטור בהייטק",
+      url: "https://takethenextstep.netlify.app/about",
     },
     offers: {
       "@type": "Offer",
       price: pkg.price.replace("₪", ""),
       priceCurrency: "ILS",
-      url: "https://takethenextstep.netlify.app/pricing", // Your domain with path
+      url: "https://takethenextstep.netlify.app/pricing",
     },
   };
 
   return {
-    title: `שיעור אישית בהייטק | ${pkg.name} | הדרך לקריירה מקצועית`,
-    description: `ניסיון מקצועי ושיעור אישית בהייטק. ${pkg.description}. ${pkg.features.join(". ")}. הדרך המותאמת בקריירת ההייטק שלך מתחיל עם ${pkg.name}.`,
-    keywords: `שיעור אישית, הדרך להייטק, ניסיון מקצועי, ${pkg.name}, מסלולי לימוד, קריירה בהייטק, הייטק, הצעד הבא, ${pkg.features.join(", ")}`,
+    title: `מסלול אישי להייטק | ${pkg.name} | ליווי מקצועי עם יניר מידלר`,
+    description: `המסלול "${pkg.name}" מציע ליווי אישי, תרגול מעשי, והכנה לקריירה אמיתית בהייטק. ${pkg.description}. כולל: ${pkg.features.join(", ")}`,
+    keywords: `יניר מידלר, שיעור אישי, קריירה בהייטק, ${pkg.name}, מנטור הייטק, ליווי מקצועי, מסלול למתחילים, מסלול מתקדמים, ${pkg.features.join(", ")}`,
 
     openGraph: {
       type: "website",
-      title: `שיעור אישית בהייטק: ${pkg.name} | ${PRICING_CONTENT.title}`,
-      description: `ניסיון מעשי והדרך לקריירה: ${pkg.description}. ${pkg.features[0]}. הצעד הבא בקריירת ההייטק שלך.`,
+      title: `מסלול אישי לפיתוח קריירה: ${pkg.name} | Next Step – יניר מידלר`,
+      description: `ליווי מקצועי בהתאמה אישית. ${pkg.description}. כולל: ${pkg.features[0]}`,
       locale: "he_IL",
-      url: `https://takethenextstep.netlify.app/pricing#${pkg.name.toLowerCase().replace(/ /g, "-")}`, // Your domain with path and anchor
+      url: `https://takethenextstep.netlify.app/pricing#${pkg.name
+        .toLowerCase()
+        .replace(/ /g, "-")}`,
     },
 
     twitter: {
       card: "summary",
-      title: `שיעור אישית להייטק | ${pkg.name} | ${PRICING_CONTENT.title}`,
-      description: `${pkg.description}. הדרך המותאמת לקריירת ההייטק שלך.`,
-      site: "@your_twitter_handle", // Your Twitter handle if available
+      title: `Next Step – מסלול ${pkg.name} | שיעור אישי עם יניר מידלר`,
+      description: `${pkg.description}. תכנית מותאמת אישית לפיתוח הקריירה שלך בהייטק.`,
+      site: "@your_twitter_handle", // עדכן אם רלוונטי
     },
 
     other: {
@@ -64,7 +64,6 @@ export function generateMetadata({
       "product:price:currency": "ILS",
     },
 
-    // Add the JSON-LD structured data
     alternates: {
       types: {
         "application/ld+json": JSON.stringify(structuredData),
@@ -72,6 +71,7 @@ export function generateMetadata({
     },
   };
 }
+
 
 export function PackageCard({ pkg, index }: PackageCardProps) {
   return (

@@ -4,23 +4,18 @@ import { MotionDiv } from "../Shared/motion/MotionDiv";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `ניסיון מעשי בהייטק | שיעור אישית | ${ABOUT_CONTENT.title}`,
-  description: `שיעור אישית להתפתחות בהייטק עם ניסיון מעשי ומקצועי. הדרך המותאמת עבורך לפיתוח קריירה מוצלחת. ${ABOUT_CONTENT.description[0]}`,
-  keywords: `יניר מידלר, שיעור אישית, הדרך להייטק, ניסיון מעשי, מפתח Full Stack, הצעד הבא, קריירה בהייטק, ${ABOUT_CONTENT.specialties.categories.flatMap((cat) => cat.skills).join(", ")}`,
+  title: "יניר מידלר | מנטורינג לקריירה בהייטק עם ניסיון מעשי",
+  description:
+    "הכירו את יניר מידלר – מפתח Full Stack מנוסה ומנטור לקריירה בהייטק. ליווי מקצועי, ידע מהשטח, ותרגול מעשי שיעזרו לכם להתקבל לתעשייה ולבנות מסלול מותאם אישית.",
+  keywords: `יניר מידלר, מנטור הייטק, ליווי קריירה, Full Stack, מנטורינג טכנולוגי, תכנות, קריירה בהייטק, מציאת עבודה בהייטק, ${ABOUT_CONTENT.specialties.categories.flatMap((cat) => cat.skills).join(", ")}`,
 
   openGraph: {
     type: "profile",
-    title: `ניסיון מקצועי בהייטק | שיעור אישית | ${ABOUT_CONTENT.title}`,
-    description: `${ABOUT_CONTENT.description[0]} הדרך המותאמת אישית בקריירת ההייטק.`,
+    title: "יניר מידלר – מנטור לקריירה בהייטק עם ניסיון אמיתי",
+    description:
+      "מפתח תוכנה ומנטור עם ניסיון מעשי בתעשיית ההייטק. תרגול מקצועי, ליווי אישי ובניית מסלול קריירה מותאם עבורך.",
     locale: "he_IL",
-    url: "https://takethenextstep.netlify.app/about", // Your domain with path
-  },
-
-  twitter: {
-    card: "summary",
-    title: `ניסיון וידע בהייטק | שיעור אישית | ${ABOUT_CONTENT.title}`,
-    description: `${ABOUT_CONTENT.description[0]} הדרך להצלחה בהייטק.`,
-    site: "@your_twitter_handle", // Your Twitter handle if available
+    url: "https://takethenextstep.netlify.app/about",
   },
 
   other: {
@@ -29,6 +24,8 @@ export const metadata: Metadata = {
     "profile:username": "yanirvs",
   },
 };
+
+
 
 export function AboutDescription() {
   return (

@@ -2,28 +2,23 @@ import { About, Contact, Hero, Pricing } from "@/sections";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "שיעור אישית להייטק | הדרך להצלחה בקריירה | יניר מידלר",
+  title: "Next Step – מנטורינג לקריירה בהייטק | יניר מידלר",
   description:
-    "שיעור אישית לפיתוח קריירה בהייטק עם ניסיון מעשי. הדרך המותאמת אישית עבורך להצלחה בתעשיית ההייטק עם ליווי מקצועי.",
+    "ליווי מקצועי לפיתוח קריירה בהייטק עם יניר מידלר – מפתח Full Stack מנוסה. תרגול מעשי, בניית קורות חיים, הכנה לראיונות עבודה ויצירת מסלול מותאם אישית לעולם ההייטק.",
   keywords:
-    "שיעור אישית, הדרך להייטק, ניסיון בתכנות, קריירה בהייטק, ליווי מקצועי",
+    "יניר מידלר, מנטור הייטק, ליווי לקריירה, קריירה בהייטק, מנטורינג טכנולוגי, ראיון עבודה, קורות חיים, פיתוח אישי, מפתח תוכנה, full stack, לימוד תכנות",
 
   openGraph: {
     type: "website",
-    title: "שיעור אישית להייטק | הדרך המקצועית לקריירה מוצלחת",
+    title: "Next Step – המסלול שלך לקריירה בהייטק | יניר מידלר",
     description:
-      "ליווי מקצועי עם ניסיון אמיתי - הדרך המותאמת אישית עבורך בתעשיית ההייטק.",
+      "מסלול מותאם אישית לעולם ההייטק עם מנטור מנוסה. תרגול מקצועי, הכנה מעשית ושיפור כישורים טכנולוגיים בדרך לקריירה אמיתית.",
     locale: "he_IL",
-    url: "https://takethenextstep.netlify.app/", // Your domain
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "שיעור אישית בהייטק | ניסיון מעשי",
-    description: "הדרך המותאמת אישית להצלחה בתעשיית ההייטק.",
-    site: "@your_twitter_handle", // Your Twitter handle if available
+    url: "https://takethenextstep.netlify.app/",
   },
 };
+
+
 
 export default function Home() {
   return (
