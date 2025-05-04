@@ -42,7 +42,7 @@ export function AboutDescription() {
     return text.split(pattern).map((part, i) =>
       highlightPhrases.includes(part.trim()) ? (
         <React.Fragment key={i}>
-          {part.trim() === "Next Step" || part.trim() === 'אני לא מוכר קורסים יקרים במאות או אלפי שקלים' ? '' : <br />}
+          {part.trim() === "Next Step" ? '' : <br />}
           <span className="underline underline-offset-4 decoration-purple-400 decoration-2">
             {part + " "}
           </span>
