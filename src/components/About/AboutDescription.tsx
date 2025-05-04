@@ -2,6 +2,7 @@ import { ABOUT_CONTENT } from "@/constans";
 import { KeyPoint } from "./KeyPoint";
 import { MotionDiv } from "../Shared/motion/MotionDiv";
 import { Metadata } from "next";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "יניר מידלר | הצעד הבא – מנטורינג לקריירה בהייטק עם ניסיון מעשי",
@@ -25,27 +26,31 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export function AboutDescription() {
-  const highlightWords = ["React.js", "Next.js", "Node.js", "NestJS", "TypeScript"];
+  const highlightPhrases = ABOUT_CONTENT.highlightPhrases;
+  const specialLine = ABOUT_CONTENT.specialLine;
+  const highlightText = (text: string) => {
+    if (text === specialLine) {
+      return (
+        <span className="text-purple-400 font-semibold hover:text-purple-300 transition-colors">
+          {text}
+        </span>
+      );
+    }
 
-  const highlightTechnologies = (text: string) => {
-    return text.split(" ").map((word, index) => {
-      const cleanWord = word.replace(/[^a-zA-Z0-9.]/g, ""); // ניקוי תווים כמו פסיקים
-      if (highlightWords.includes(cleanWord)) {
-        return (
-          <span
-            key={index}
-            className="text-purple-400 font-semibold transition-colors duration-200 hover:text-purple-300"
-          >
-            {word}{" "}
+    const pattern = new RegExp(`(${highlightPhrases.join("|")})`);
+    return text.split(pattern).map((part, i) =>
+      highlightPhrases.includes(part.trim()) ? (
+        <React.Fragment key={i}>
+          {part.trim() === "Next Step" || part.trim() === 'אני לא מוכר קורסים יקרים במאות או אלפי שקלים' ? '' : <br />}
+          <span className="underline underline-offset-4 decoration-purple-400 decoration-2">
+            {part + " "}
           </span>
-
-        );
-      }
-      return word + " ";
-    });
+        </React.Fragment>
+      ) : (
+        part + " "
+      )
+    );
   };
 
   return (
@@ -57,7 +62,7 @@ export function AboutDescription() {
               key={index}
               className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
             >
-              {highlightTechnologies(paragraph)}
+              {highlightText(paragraph)}
             </h3>
           ))}
         </div>
@@ -73,4 +78,7 @@ export function AboutDescription() {
     </div>
   );
 }
+
+
+
 
