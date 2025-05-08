@@ -1,8 +1,11 @@
+import { IAboutProps } from "@/common";
 import { AboutDescription } from "@/components/About/AboutDescription";
-import { ABOUT_CONTENT } from "@/constans";
 import Image from "next/image";
 
-export function About() {
+
+
+export function About({ about }: IAboutProps) {
+
   return (
     <section
       id="about"
@@ -17,7 +20,7 @@ export function About() {
           className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-l from-purple-600 to-purple-400 bg-clip-text text-transparent mb-8"
           itemProp="jobTitle"
         >
-          {ABOUT_CONTENT.title}
+          {about.title}
         </h2>
 
         <div className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mb-8 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg">
@@ -30,12 +33,12 @@ export function About() {
             priority
             itemProp="image"
             style={{
-              objectPosition: "50% 45%", // Adjust these values to center the face
+              objectPosition: "50% 45%",
             }}
           />
         </div>
 
-        <AboutDescription />
+        <AboutDescription aboutData={about} />
       </div>
     </section>
   );

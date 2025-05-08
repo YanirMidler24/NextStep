@@ -4,9 +4,20 @@ import { useEffect } from "react";
 import { HeroButton } from "@/components/Hero/HeroButton";
 import { HeroTitle } from "@/components/Hero/HeroTitle";
 import { TechnologiesGrid } from "@/components/Hero/TechnologiesGrid";
-import { HERO_CONTENT } from "@/constans";
+import { safeJSONParse } from "@/common/helpers/safeJSONParse";
 
-export function Hero() {
+// Update Hero to accept heroData as props
+
+interface HeroProps {
+  heroData: {
+    title: string;
+    subtitle: string;
+    description: string;
+    buttontext: string;
+    technologies: string;
+  };
+}
+export function Hero({ heroData }: HeroProps) {
   // בדיקה אם יש anchor בכתובת
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
@@ -32,9 +43,19 @@ export function Hero() {
       itemType="https://schema.org/Service"
     >
       <div className="max-w-7xl mx-auto text-center">
-        <HeroTitle />
-        <HeroButton onClick={scrollToContact} text={HERO_CONTENT.buttonText} />
-        <TechnologiesGrid />
+        {/* Pass the hero data to HeroTitle */}
+        <HeroTitle
+          title={heroData?.title}
+          subTitle={heroData?.subtitle}
+          description={heroData?.description ? safeJSONParse(heroData.description) : []}
+        />
+        <HeroButton
+          onClick={scrollToContact}
+          text={heroData?.buttontext || "תיאום שיחת ייעוץ חינם"}
+        />
+        <TechnologiesGrid
+          technologies={heroData?.technologies ? safeJSONParse(heroData.technologies) : []}
+        />
       </div>
     </section>
   );

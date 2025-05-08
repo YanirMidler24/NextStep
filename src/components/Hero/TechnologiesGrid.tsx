@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { TechnologyCard } from "./TechnologyCard";
-import { HERO_CONTENT } from "@/constans";
+
+// Define the Technology interface
+export interface Technology {
+    name: string;
+    category: string;
+}
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,7 +23,8 @@ const itemVariants = {
     visible: { opacity: 1, y: 0 },
 };
 
-export function TechnologiesGrid() {
+// Specify that technologies is an array of Technology objects
+export function TechnologiesGrid({ technologies = [] as Technology[] }) {
     return (
         <motion.div
             variants={containerVariants}
@@ -26,7 +32,7 @@ export function TechnologiesGrid() {
             animate="visible"
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
         >
-            {HERO_CONTENT.technologies.map((tech, index) => (
+            {technologies.map((tech, index) => (
                 <motion.div key={index} variants={itemVariants}>
                     <TechnologyCard
                         name={tech.name}

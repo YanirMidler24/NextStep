@@ -38,6 +38,8 @@ export const ABOUT_CONTENT = {
 };
 
 
+
+
 export const CONTACT_CONTENT = {
   title: "צור/י קשר",
   description: "מעוניין/ת להתחיל? השאר/י פרטים ואחזור אליך בהקדם.",
@@ -53,35 +55,6 @@ export const CONTACT_CONTENT = {
     {
       title: "אזור פעילות",
       details: ["שיעורים מקוונים", "זמין בכל הארץ"],
-    },
-  ],
-};
-
-export const HERO_CONTENT = {
-  title: "קריירה בהייטק זה לא חלום – זה הצעד הבא שלך",
-  subTitle: "הכוונה אישית עם ניסיון מעשי",
-  description: [
-    "לימוד תכנות אחד על אחד בצורה הכי ברורה, מעשית וממוקדת. ",
-    "הכנה חכמה לראיונות עבודה – כולל סימולציות אמיתיות והכוונה אישית. ",
-    "ליווי לבניית מסלול כדי שתתחיל את הדרך שלך בעולם ההייטק",
-  ],
-  buttonText: "תיאום שיחת ייעוץ חינם",
-  technologies: [
-    {
-      name: "React",
-      category: "Frontend",
-    },
-    {
-      name: "Next.js",
-      category: "Frontend",
-    },
-    {
-      name: "Node.js",
-      category: "Backend",
-    },
-    {
-      name: "NestJS",
-      category: "Backend",
     },
   ],
 };
@@ -156,3 +129,38 @@ export const blacklistPatterns = [
   /['"`]/g,                       // quotes
   /;/g,                           // semicolon
 ];
+
+
+export const HERO_QUERY = `
+  {
+    hero {
+      title
+      subtitle
+      description
+      buttontext
+      technologies
+    }
+  }
+`;
+
+export const MAIN_QUERY = `
+  {
+    mainpageseo {
+      seo
+    }
+  }
+`;
+
+
+export const ABOUT_CONTENT_QUERY = `
+  {
+    about {
+      title
+      description
+      keypoints
+      highlightphrases
+      specialline
+      specialties
+    }
+  }
+`;

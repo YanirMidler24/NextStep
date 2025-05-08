@@ -1,84 +1,79 @@
-import { ABOUT_CONTENT } from "@/constans";
+import React from "react";
 import { KeyPoint } from "./KeyPoint";
 import { MotionDiv } from "../Shared/motion/MotionDiv";
 import { Metadata } from "next";
-import React from "react";
+import { AboutDescriptionProps, extractArray } from "@/common";
 
-export const metadata: Metadata = {
-  title: "יניר מידלר | הצעד הבא – מנטורינג לקריירה בהייטק עם ניסיון מעשי",
-  description:
-    "הצעד הבא שלך לעולם ההייטק מתחיל עם יניר מידלר – מפתח Full Stack ומנטור מנוסה. ליווי אישי, ידע מקצועי מהתעשייה, ותרגול מעשי שיכינו אותך לקריירה אמיתית בהייטק.",
-  keywords: `הצעד הבא, יניר מידלר, מנטור הייטק, ליווי קריירה, Full Stack, מנטורינג טכנולוגי, תכנות, קריירה בהייטק, מציאת עבודה בהייטק, ${ABOUT_CONTENT.specialties.categories.flatMap((cat) => cat.skills).join(", ")}`,
+export async function generateMetadata({ aboutData }: { aboutData: AboutDescriptionProps['aboutData'] }): Promise<Metadata> {
+  const { seo, specialties } = aboutData;
+  const skillsKeywords = specialties?.specialties?.categories
+    ? `, ${specialties.specialties.categories.flatMap(c => c.skills).join(", ")}`
+    : "";
 
-  openGraph: {
-    type: "profile",
-    title: "יניר מידלר – מנטור לצמיחה מקצועית | הצעד הבא לקריירה בהייטק",
-    description:
-      "הצעד הבא שלך עם יניר מידלר – ליווי מקצועי ותרגול אמיתי מהתעשייה. מסלול מותאם אישית שיביא אותך לעבודה בהייטק.",
-    locale: "he_IL",
-    url: "https://takethenextstep.netlify.app/about",
-  },
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: `${seo.keywords}${skillsKeywords}`,
+    openGraph: {
+      ...seo.openGraph,
+      type: "website"
+    },
+    other: seo.other,
+  };
+}
 
-  other: {
-    "profile:first_name": "יניר",
-    "profile:last_name": "מידלר",
-    "profile:username": "yanirvs",
-  },
-};
+export function AboutDescription({ aboutData }: AboutDescriptionProps) {
+  const description = extractArray(aboutData.description);
+  const keypoints = extractArray(aboutData.keypoints);
+  const highlightPhrases = extractArray(aboutData.highlightphrases);
+  const { specialline: specialLine } = aboutData;
 
-export function AboutDescription() {
-  const highlightPhrases = ABOUT_CONTENT.highlightPhrases;
-  const specialLine = ABOUT_CONTENT.specialLine;
   const highlightText = (text: string) => {
     if (text === specialLine) {
-      return (
-        <span className="text-purple-400 font-semibold hover:text-purple-300 transition-colors">
-          {text}
-        </span>
-      );
+      return <span className="text-purple-400 font-semibold hover:text-purple-300 transition-colors">{text}</span>;
     }
 
-    const pattern = new RegExp(`(${highlightPhrases.join("|")})`);
-    return text.split(pattern).map((part, i) =>
-      highlightPhrases.includes(part.trim()) ? (
-        <React.Fragment key={i}>
-          {part.trim() === "Next Step" ? '' : <br />}
-          <span className="underline underline-offset-4 decoration-purple-400 decoration-2">
-            {part + " "}
-          </span>
-        </React.Fragment>
-      ) : (
-        part + " "
-      )
-    );
+    const validPhrases = highlightPhrases.filter(phrase => phrase.trim());
+    if (!validPhrases.length) return text;
+
+    try {
+      const pattern = new RegExp(`(${validPhrases.join("|")})`, 'g');
+      return text.split(pattern).map((part, i) =>
+        validPhrases.includes(part.trim())
+          ? <React.Fragment key={i}>
+            {part.trim() === "Next Step" ? '' : <br />}
+            <span className="underline underline-offset-4 decoration-purple-400 decoration-2">{part + " "}</span>
+          </React.Fragment>
+          : part + " "
+      );
+    } catch {
+      return text;
+    }
   };
 
   return (
     <div className="flex flex-col gap-12 text-center">
       <MotionDiv delay={0}>
         <div className="space-y-4">
-          {ABOUT_CONTENT.description.map((paragraph, index) => (
-            <h3
-              key={index}
-              className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
-            >
-              {highlightText(paragraph)}
-            </h3>
-          ))}
+          {description.length > 0
+            ? description.map((paragraph, index) => (
+              <h3 key={index} className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                {highlightText(paragraph)}
+              </h3>
+            ))
+            : <h3 className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">No description available</h3>
+          }
         </div>
       </MotionDiv>
 
       <MotionDiv delay={0.2}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {ABOUT_CONTENT.keyPoints.map((point, index) => (
-            <KeyPoint key={index} text={point} />
-          ))}
+          {keypoints.length > 0
+            ? keypoints.map((point, index) => <KeyPoint key={index} text={point} />)
+            : <div className="col-span-3 text-center">No key points available</div>
+          }
         </div>
       </MotionDiv>
     </div>
   );
 }
-
-
-
-
