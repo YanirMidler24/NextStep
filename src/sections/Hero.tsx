@@ -5,12 +5,9 @@ import { HeroButton } from "@/components/Hero/HeroButton";
 import { HeroTitle } from "@/components/Hero/HeroTitle";
 import { TechnologiesGrid } from "@/components/Hero/TechnologiesGrid";
 import { safeJSONParse } from "@/common/helpers/safeJSONParse";
-import { HeroData } from "@/common";
-
-
+import { HeroData, Technology } from "@/common";
 
 export function Hero({ heroData }: { heroData: HeroData }) {
-  // בדיקה אם יש anchor בכתובת
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (hash) {
@@ -28,6 +25,15 @@ export function Hero({ heroData }: { heroData: HeroData }) {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Properly typed parsing of JSON strings
+  const description = heroData?.description
+    ? safeJSONParse<string[]>(heroData.description, [])
+    : [];
+
+  const technologies = heroData?.technologies
+    ? safeJSONParse<Technology[]>(heroData.technologies, [])
+    : [];
+
   return (
     <section
       className="min-h-screen flex items-center justify-center py-20 px-4"
@@ -38,7 +44,7 @@ export function Hero({ heroData }: { heroData: HeroData }) {
         <HeroTitle
           title={heroData?.title || "הדרך שלך להייטק"}
           subTitle={heroData?.subtitle || "תכנות, ראיונות עבודה, והכל בדרך שלך"}
-          description={heroData?.description ? safeJSONParse(heroData.description) : []}
+          description={description}
           seo={heroData?.seo}
         />
         <HeroButton
@@ -46,7 +52,7 @@ export function Hero({ heroData }: { heroData: HeroData }) {
           text={heroData?.buttontext || "תיאום שיחת ייעוץ חינם"}
         />
         <TechnologiesGrid
-          technologies={heroData?.technologies ? safeJSONParse(heroData.technologies) : []}
+          technologies={technologies}
         />
       </div>
     </section>
