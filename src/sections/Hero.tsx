@@ -5,19 +5,11 @@ import { HeroButton } from "@/components/Hero/HeroButton";
 import { HeroTitle } from "@/components/Hero/HeroTitle";
 import { TechnologiesGrid } from "@/components/Hero/TechnologiesGrid";
 import { safeJSONParse } from "@/common/helpers/safeJSONParse";
+import { HeroData } from "@/common";
 
-// Update Hero to accept heroData as props
 
-interface HeroProps {
-  heroData: {
-    title: string;
-    subtitle: string;
-    description: string;
-    buttontext: string;
-    technologies: string;
-  };
-}
-export function Hero({ heroData }: HeroProps) {
+
+export function Hero({ heroData }: { heroData: HeroData }) {
   // בדיקה אם יש anchor בכתובת
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
@@ -43,11 +35,11 @@ export function Hero({ heroData }: HeroProps) {
       itemType="https://schema.org/Service"
     >
       <div className="max-w-7xl mx-auto text-center">
-        {/* Pass the hero data to HeroTitle */}
         <HeroTitle
-          title={heroData?.title}
-          subTitle={heroData?.subtitle}
+          title={heroData?.title || "הדרך שלך להייטק"}
+          subTitle={heroData?.subtitle || "תכנות, ראיונות עבודה, והכל בדרך שלך"}
           description={heroData?.description ? safeJSONParse(heroData.description) : []}
+          seo={heroData?.seo}
         />
         <HeroButton
           onClick={scrollToContact}

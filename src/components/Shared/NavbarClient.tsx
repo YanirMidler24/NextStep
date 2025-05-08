@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { NAVBAR_CONTENT } from "@/constans";
+import { NAVBAR_CONTENT } from "@/common/constants";
 import { NavbarBrand } from "@/components/Navbar/NavbarBrand";
 import { DesktopMenu } from "@/components/Navbar/DesktopMenu";
 import { MobileMenuButton } from "@/components/Navbar/MobileMenuButton";

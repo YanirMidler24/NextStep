@@ -1,4 +1,4 @@
-import { PRICING_CONTENT } from "@/constans";
+import { PRICING_CONTENT } from "@/common/constants";
 import { Metadata } from "next";
 import { FeatureItem } from "../Pricing/FeatureItem";
 import { PackageCardClientWrapper } from "../Shared/PackageCardClientWrapper";

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SpecialtyCard } from './SpecialtyCard';
-import { ABOUT_CONTENT } from "@/constans";
+import { ABOUT_CONTENT } from "@/common/constants";
 
 export function Specialties() {
     return (

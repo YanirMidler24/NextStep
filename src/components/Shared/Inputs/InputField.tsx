@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { LucideIcon, Mail, Phone, User } from "lucide-react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import clsx from "clsx";
-import { blacklistPatterns } from "@/constans";
+import { blacklistPatterns } from "@/common/constants";
 
 interface InputFieldProps {
     id: string;

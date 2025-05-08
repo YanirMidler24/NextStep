@@ -1,5 +1,5 @@
-import { IAboutProps, HeroData, MainPageSeo } from "@/common";
-import { ABOUT_CONTENT_QUERY, HERO_QUERY, MAIN_QUERY } from "@/constans";
+import { HeroDataResponse, IAboutProps, MainPageSeo } from "@/common";
+import { ABOUT_CONTENT_QUERY, HERO_QUERY, MAIN_QUERY } from "@/common/constants";
 import { datocmsClient } from "@/lib/datocms";
 import { About, Contact, Hero, Pricing } from "@/sections";
 import { Metadata } from "next";
@@ -21,12 +21,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 export default async function Home() {
-  const heroData: HeroData = await datocmsClient.request(HERO_QUERY);
+  const heroDataResponse: HeroDataResponse = await datocmsClient.request(HERO_QUERY);
   const aboutData: IAboutProps = await datocmsClient.request(ABOUT_CONTENT_QUERY);
 
   return (
     <main className="flex-1">
-      <Hero heroData={heroData.hero} />
+      <Hero heroData={heroDataResponse.hero} />
       <About about={aboutData.about} />
       <Pricing />
       <Contact />

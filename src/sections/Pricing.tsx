@@ -1,5 +1,5 @@
 import { PackageCard } from "@/components/Pricing/PackageCard";
-import { PRICING_CONTENT } from "@/constans";
+import { PRICING_CONTENT } from "@/common/constants";
 
 export function Pricing() {
 

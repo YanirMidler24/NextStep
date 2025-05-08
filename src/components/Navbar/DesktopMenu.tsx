@@ -1,4 +1,4 @@
-import { NAVBAR_CONTENT } from '@/constans';
+import { NAVBAR_CONTENT } from '@/common/constants';
 import { DesktopMenuItem } from './DesktopMenuItem';
 
 export function DesktopMenu({ onItemClick }: { onItemClick: (id: string) => void }) {

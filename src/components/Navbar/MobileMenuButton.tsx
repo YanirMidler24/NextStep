@@ -1,4 +1,4 @@
-import { NAVBAR_CONTENT } from "@/constans";
+import { NAVBAR_CONTENT } from "@/common/constants";
 import { motion } from "framer-motion";
 
 export function MobileMenuButton({

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { CONTACT_CONTENT } from "@/constans";
+import { CONTACT_CONTENT } from "@/common/constants";
 import { ContactForm } from "../Shared/Contact/ContactForm";
 import { InfoCard } from "./InfoCard";
 

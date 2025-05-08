@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { MobileMenuItem } from './MobileMenuItem';
-import { NAVBAR_CONTENT } from '@/constans';
+import { NAVBAR_CONTENT } from '@/common/constants';
 import { ShareButtons } from '../Shared/footer/ShareButtons';
 
 export function MobileMenu({ isOpen, onItemClick }: { isOpen: boolean, onItemClick: (id: string) => void }) {

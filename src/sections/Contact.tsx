@@ -1,5 +1,5 @@
 import { ContactServer } from "@/components/Contact/ContactServer";
-import { CONTACT_CONTENT } from "@/constans";
+import { CONTACT_CONTENT } from "@/common/constants";
 
 
 export function Contact() {

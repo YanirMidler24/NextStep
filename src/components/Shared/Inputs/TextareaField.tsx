@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { UseFormRegisterReturn } from "react-hook-form";
 import clsx from "clsx";
 import { useState } from "react";
-import { blacklistPatterns } from "@/constans";
+import { blacklistPatterns } from "@/common/constants";
 
 interface TextareaFieldProps {
     id: string;
