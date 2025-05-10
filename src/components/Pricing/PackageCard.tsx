@@ -15,7 +15,6 @@ interface PackageCardProps {
   index: number;
 }
 
-
 export function generateMetadata({
   pkg,
 }: {
@@ -66,8 +65,6 @@ export function generateMetadata({
   };
 }
 
-
-
 export function PackageCard({ pkg, index }: PackageCardProps) {
   return (
     <PackageCardClientWrapper delay={index * 0.1}>
@@ -86,24 +83,19 @@ export function PackageCard({ pkg, index }: PackageCardProps) {
           >
             {pkg.name}
           </h3>
-          <p className="text-gray-400 mb-4" itemProp="description">
+          <p
+            className="text-gray-100 text-lg leading-relaxed mb-4"
+            itemProp="description"
+          >
             {pkg.description}
           </p>
-          <div
-            className="text-3xl font-bold text-white mb-4"
-            aria-label={`מחיר: ${pkg.price}`}
-            itemProp="offers"
-            itemScope
-            itemType="https://schema.org/Offer"
-          >
-            <span itemProp="price" content={pkg.price.replace("₪", "")}>
-              {pkg.price}
-            </span>
-            <meta itemProp="priceCurrency" content="ILS" />
-          </div>
         </div>
+
         {pkg.highlight && (
-          <p className="text-sm text-green-400 font-semibold mb-4" aria-label="הדגשת מחיר משתלם">
+          <p
+            className="text-sm text-green-400 font-semibold mb-4"
+            aria-label="הדגשת מחיר משתלם"
+          >
             {pkg.highlight}
           </p>
         )}
@@ -116,8 +108,10 @@ export function PackageCard({ pkg, index }: PackageCardProps) {
           ))}
         </ul>
 
-        <ScrollToContactButton label={PRICING_CONTENT.linkText} packageName={pkg.name} />
-
+        <ScrollToContactButton
+          label={PRICING_CONTENT.linkText}
+          packageName={pkg.name}
+        />
       </div>
     </PackageCardClientWrapper>
   );
