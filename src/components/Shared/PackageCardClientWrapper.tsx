@@ -1,22 +1,25 @@
-// src/components/Pricing/PackageCardClientWrapper.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
+interface PackageCardClientWrapperProps {
+  children: ReactNode;
+  delay?: number;
+  className?: string; // Add className prop
+}
+
 export function PackageCardClientWrapper({
   children,
   delay = 0,
-}: {
-  children: ReactNode;
-  delay?: number;
-}) {
+  className = "", // Default to empty string
+}: PackageCardClientWrapperProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      viewport={{ once: true }}
+      className={className} // Apply the className here
     >
       {children}
     </motion.div>
